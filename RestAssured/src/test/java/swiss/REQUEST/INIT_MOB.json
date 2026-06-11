@@ -1,0 +1,21 @@
+{
+  "connectionType": "MOBILE",
+  "addressCity": "Burgdorf",
+  "addressPostalBox": 455,
+  "addressPostalCode": 3400,
+  "addressStreet": "Bahnhofstrasse",
+  "addressStreetNumber": "12a",
+  "partialPorting": false,
+  "portingPriority": "NORMAL",
+  "powerOfAttorneyDate": "2025-02-12",
+  "powerOfAttorneyId": 136598384512,
+  "powerOfAttorneyType": "RESPECT_CONTRACT",
+  "subscriberFamilyName": "Muster",
+  "subscriberForename": "Peter",
+  "subscriberNumber01": "0778200891",
+  "tspComment": "Internal comment",
+  "tspInternalReference": "SBL-2-4VDZ7LQ5",
+  "wishDate": "",
+  "wishTime": "15:00"
+	
+}

@@ -1,0 +1,32 @@
+package swissPortout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.testng.annotations.BeforeMethod;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class Baseclass {
+	
+	
+	
+	public static RequestSpecification req;
+	public static Response response;
+	public static List<String> woID = new ArrayList<>();
+	
+	@BeforeMethod
+	public void setup() 
+	{
+		RestAssured.baseURI="https://ws.testsrv.numberportability.ch/inetonp/api/";
+	}
+	
+	public String setupCookies() 
+	{
+		return "eyJ4NXQjUzI1NiI6IktXb2Z6Rk9OT2dNemY4aS1vcllycEVJTXFOaDBqOGZqcVp3bG8yRGgyMjQiLCJraWQiOiJpbmV0dWFhIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJBZkppSyIsInRzcF9pZCI6OTgwOTUsInVzZXJfdHlwZSI6IlciLCJ1c2VyX25hbWUiOiJBZkppSyIsInNjb3BlIjpbIm9wZW5pZCBwcm9maWxlIGVtYWlsIl0sImlzcyI6ImluZXQtdWFhIiwic2Vzc2lvbl9pZCI6IkFmSmlLIiwiZXhwIjoxNzczMDYzODM3LCJpYXQiOjE3NzMwMjA2MzcsImp0aSI6ImI2ZjY2ZDdmLTEwOTItNDQwYy04MGI3LWYzMDRlYmNmMTYxMCIsImNsaWVudF9pZCI6IndlYl9hcHAiLCJhdXRob3JpdGllcyI6WyJST0xFX0lfUiIsIlJPTEVfRF9XIiwiUk9MRV9TX1IiLCJST0xFX1BfVyIsIlJPTEVfV0VCX1NFUlZJQ0UiLCJST0xFX09fVyIsIlJPTEVfVF9SIiwiUk9MRV9PX1IiLCJST0xFX0lfVyIsIlJPTEVfUF9SIiwiUk9MRV9XX1ciLCJST0xFX1dfUiIsIlJPTEVfVF9XIiwiUk9MRV9VU0VSIiwiUk9MRV9DX1IiLCJST0xFX0RfUiJdfQ.eYB42x6bMXjlEROOpJ-6fgRVxvkSutzxIAC9nOM_J3_tT1XgYIYqQfmkKAFt1Y4Ism30ABr4tBQb2UUCSA4RN9LmyHrJ094fjj-eeSlJlcJ-VFI-1hqy6yKmnOIuPGHfZE4uPxV3r4nNSTumB9FP5H0KCz1VoGZPOM57W0WeGpb8qJRoagKjCgG99vufEp4V6YhnPMQVnPFCn9h9bpjw_che48Yn9I5IuNUlEYekDtwwt7s4SpMfrVnQKKTnxclu1PT1Luy3d1sJK5-NCvkyLpjdbQms86OysnET4RH99Qo3OKPSt-pJmRIrUmKb6AQZIkrLED4qoZ2Huj8AM2rXhA";
+	}
+	
+	
+}
