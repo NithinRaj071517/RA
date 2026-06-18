@@ -1,0 +1,235 @@
+SetUp Environment
+------------------
+
+Java  --> For Programming language
+Eclipse --> For IDE
+Maven --> For Build tool Java projects 
+TestNG  --> For Execution
+Rest Assured Dependencies   --> For API Automation
+
+
+What is RestAssured?
+--------------------
+	Java-based library used for testing RESTful APIs.
+	Easy to write readable and maintainable test scripts for API automation.
+
+	RestAssured  --> Java
+	RestSharp  --> C#
+	Pyrest --> Python
+	
+Why RestAssured preferred for API Automation?
+---------------------------------------------
+	1.Open Source
+	2.Inbuilt Assertions (Hamcrest)
+	3.Easy to code
+	4.Designed Specifically for REST API Testing
+	5.Easy Integration With Java Testing Frameworks (Junit, TestNG, Cucumber)
+	6.Given–When–Then BDD style improves readability and maintainability
+		Keywords used in BDD:
+		---------------------
+
+			given()
+				Set Cookies , add authentication, add parameters , set headers info , end points
+
+			when()
+				get , post , put , delete
+						+
+				Request body		
+				
+			then()
+				Assertions,validate status code, extract response, extract headers, cookies & response body
+				
+Limitations of postman overcome by RestAssured:
+-----------------------------------------------
+	Combining Selenium + RestAssured Library UI+API automation
+	Rich in reporting 
+	Parallel execution supports
+	
+given()   → setup request
+when()    → send request
+then()    → validate response
+
+Dependencies
+-------------
+
+1. rest-assured
+2. testng
+json-schema-validation
+json-path
+xml-path
+
+java-hamcrest
+hamcrest-core
+hamcrest-library
+ 
+ RestAssured.baseURI --> is a global configuration variable in Rest Assured used to define the base URL (domain) of your API.
+						It helps you avoid repeating the same base URL in every request.
+						
+RequestSpecification --> is an interface used to define and store all details of an API request before it is sent.		
+						RequestSpecification = Blueprint of your API request
+						It helps you build, reuse, and manage request configurations like:
+							Base URI
+							Headers
+							Query parameters
+							Path parameters
+							Request body
+							Authentication
+						 given() returns a RequestSpecification object
+Response --> is an interface/class that stores the API response received from the server after sending a request.
+			 Response = Result returned by API (output)
+			 It is used to:
+				Capture the API response
+				Read response data (body, status, headers)
+				Perform validations
+				Extract values (for API chaining)
+ Header --> refers to a part of the HTTP request or response that carries the additonal information about the request or response.
+		    Header = Extra details about the API request/response
+			Headers are key-value pairs included in the HTTP request/response  and serve various purpose such as
+				providing metadata, authentication and controlling API behaviour.
+			Headers plays a crucial role in enabling communication between clients and servers.
+			
+			
+Authentication --> It checks whether the user/client is valid.
+					Authentication = Verifying who you are
+					Ex:- Username & Password,API Key,Bearer Token (JWT),OAuth
+					
+					Various Authentication mechanism:
+						1. Basic Authentication -  Sends username + password (Base64 encoded) in header
+												   Simple but less secure
+												   
+													given()
+														.auth().basic("user", "pass")
+
+												   
+						2. Digest Authentication - Uses hash instead of plain password
+													More secure than Basic
+													
+													given()
+														.auth().digest("user", "pass")
+													
+						3. Preemptive Authentication - Proactively Sends credentials without waiting for server challenge
+													   Faster than normal Basic
+													   
+													   
+													   given()
+														.auth().preemptive().basic("user", "pass")
+														
+						4. Bearer Token Authentication - It is an access token  sent in the authorization header to authenticate API requests, instead
+															of sending credentials repeatedly.
+														Bearer Token = Access token used to authenticate API requests
+
+															After login, the server gives you a token (string value)
+															You send this token in every request
+															Server verifies the token instead of username/password
+															
+															
+														given()
+															.header("Authorization", "Bearer " + token)
+								OAuth 2.0 generates the Bearer token, and that Bearer token is used to access APIs.
+								
+						5. OAuth 2.0 -->  is an authorization framework that allows a client (application) to access resources on behalf of a user  using an access token, without sharing the user’s credentials.
+										Involves obtaining access token to access the protected resources
+						              OAuth 2.0 = Secure way to get and use access tokens instead of username/password.
+									  More Widely used.
+									  
+						6. API key Authentication: Invloves sending an API key in the request header/ Query Parameters
+												API Key Authentication = A method where a unique key is used to identify and authenticate a client making API requests
+														The server gives you a unique API key
+														You send this key with every request
+														Server validates the key and allows access
+						
+						
+						
+Authorization --> It checks permissions after authentication
+					Authorization = Verifying what you are allowed to do
+					Ex:- Admin → can create/delete users
+						Normal User → can only view data
+						Read / Write / Execute access	
+						
+POJO class :(Plain Old Java Object):
+----------------------------
+POJO class is a simple java class that encapsulates fields (variables ),getters, setters, and sometimes constructors.
+Contains only data , without business logic or framework specific annotations.
+
+	Characteristics:
+		1. No dependency on frameworks 
+		2. Uses private variables + public getters/setters
+		3. Easy to reuse and maintain
+		
+	Uses of POJO in Rest Assured:
+	----------------------------
+	POJO in Rest Assured is used to serialize Java objects into JSON for request bodies and deserialize JSON responses into Java objects, making API automation clean, reusable, and type-safe.
+		1. Request Body( Serialization)  --> Instead of writing JSON manually, we create a POJO object.
+											POJO object → converted to JSON automatically  (Serialization)
+		
+		2. Response Body (Deserialization) --> Convert API JSON response → POJO object.
+												JSON → POJO (Deserialization)
+												
+												
+Serialization & Deserialization:
+-------------------------------
+	It is an important concept in the context of data transmission ,storage, and communication between different systems.
+	In the context of rest assured , these concepts asre crucial for handling data in a format that can be easily sent over the network and converted back into usable object.
+	
+	Purpose:
+		1. Avoid manual JSON handling
+		2. Type safety - Access response fields using object methods
+		3. Reusability
+		4. Easy maintenance 
+	
+	
+	Serialization:
+	-------------
+		Serialization is the process of converting a Java object to  JSON/XML.
+		You send a Java object → Rest Assured converts it into JSON automatically.
+		
+	Deserialization:
+	-------------
+		Deserialization is the process of converting  JSON to  Java object(POJO).
+		You receive JSON response  → map it into Java class.
+
+Path Parameters:
+
+
+
+
+Query Parameters:
+----------------
+1. What are Query Parameters?
+	In endponit after '?' 
+2. Why Query Parameters?
+	 To filter the request 
+3. Query parameters is not common for all application , it differs	 
+
+Chaining of Request:
+-------------------
+Based on one API response , another API will execute in a chain action
+
+
+Hamcrest is a library provides methods to validate/assert values
+Matchers is a class inside Hamcrest
+
+assertThat()
+-------------
+
+In Rest Assured, assertThat() is used in the validation step of a request to start attaching assertions on the response.
+
+
+Rest Assured’s chained assertThat() (fluent API):
+	(*) Use Rest Assured’s .then().assertThat() when you’re validating directly on the response in the fluent call.
+	
+Hamcrest’s standalone assertThat(actual, matcher):	
+	(*) This is not from Rest Assured; it’s from Hamcrest 
+	(*) Use Hamcrest’s assertThat(actual, matcher) when you extract data first (with .extract().path(...), .as(...), etc.) and then assert separately.
+	
+	
+Matchers.hasItem("Lausdsdsdanne"))  --> provides list of values
+
+JSON Scheme:
+
+	JSON Schema is a standard format used to define the structure, rules, and validation of JSON data.
+	It acts like a blueprint or contract for your JSON — telling:cd
+		What fields are allowed
+		What data types they should be
+		Which fields are mandatory
+		What validations should apply
