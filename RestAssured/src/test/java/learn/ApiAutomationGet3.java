@@ -1,5 +1,7 @@
 package learn;
 
+import org.testng.annotations.Test;
+
 import io.restassured.RestAssured;
 
 
@@ -7,13 +9,15 @@ import io.restassured.RestAssured;
 
 public class ApiAutomationGet3 {
 
-	public static void main(String[] args) {
+	
+	@Test
+	public  void get3() {
 		
 		RestAssured.baseURI = "https://fakestoreapi.com/Products";		
 		
 
 		RestAssured.given()
-		.when().get()
+		.when().get("/2")
 		.then().log().all();
 	}
 }

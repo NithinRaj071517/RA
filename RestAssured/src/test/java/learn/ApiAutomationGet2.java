@@ -1,5 +1,7 @@
 package learn;
 
+import org.testng.annotations.Test;
+
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -8,9 +10,11 @@ import io.restassured.specification.RequestSpecification;
 
 public class ApiAutomationGet2 {
 
-	public static void main(String[] args) {
+	
+	@Test
+	public void get2() {
 		
-		RestAssured.baseURI = "https://fakestoreapi.com/Products";		
+		RestAssured.baseURI = "https://fakestoreapi.com/Products/";		
 		
 		
 		
